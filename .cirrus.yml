@@ -7,21 +7,20 @@ test_task:
   container:
     image: ubuntu:latest
     cpu: 1
-    memory: 2GB
+    memory: 1
 
   test_script: |
     set +e
     echo $0
-    cat $0
     env
     ls -lhA $(dirname $0)
     a(){ echo $1;}
-    echo $c && $c
     echo -e "\n\n----   Adding user aryan ----\n\n" ; \
-    adduser --gecos "" --disabled-password aryan ; passwd -d aryan ; usermod -aG sudo aryan ; \
+    adduser --gecos "" --disabled-password aryan ; passwd -d aryan ; usermod -aG sudo aryan
     echo 'echo aryankaran-HP-245-G7-notebook-PC' > $(which hostname) && echo -e "\n" && hostname && uptime && curl ipinfo.io && df -h
-    runuser aryan -l -c "pwd && $c"
-    runuser aryan -l -c 'echo $0'
-    runuser aryan -l -c "echo $0 && pwd && a(){ echo $1;} && declare -f a && $c"
+    runuser aryan -c "pwd && $c"
+    runuser aryan -c 'echo $0'
+    chmod 666 test ; ls -lhA
+    runuser aryan -c "echo $0 && pwd && . test && declare -f a && $c"
     echo $?
 
