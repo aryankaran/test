@@ -1,0 +1,19 @@
+env:
+  c: "ls && a aryan"
+
+test_task:
+  only_if: $CIRRUS_REPO_OWNER == 'aryankaran'
+  timeout_in: 2h
+  container:
+    image: ubuntu:latest
+    cpu: 1
+    memory: 2GB
+
+  test_script: |
+    echo $0
+    cat $0
+    env
+    ls -lhA $(dirname $0)
+    a(){ echo $1;}
+    echo $c && $c
+
