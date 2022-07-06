@@ -2,6 +2,7 @@ env:
   c: "ls -A . && a aryan"
 
 test_task:
+  timeout: 100m
   container:
     dockerfile: dock
     cpu: 1
