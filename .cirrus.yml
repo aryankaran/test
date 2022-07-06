@@ -4,7 +4,7 @@ env:
 test_task:
   only_if: $CIRRUS_REPO_OWNER == 'aryankaran'
   timeout_in: 5m
-  arm_container:
+  container:
     image: ubuntu:latest
     cpu: 1
     memory: 2GB
