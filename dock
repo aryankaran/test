@@ -12,7 +12,7 @@ WORKDIR /tmp
 RUN \
 apt update >/dev/null 2>/dev/null;echo -e "\n\n-----        Installing basic packages       ------\n\n"; \
 echo Installing $packages ; \
-time apt install -yq $packages >/dev/null 2>/dev/null && command -v python python3 ;\
+time apt install -yq $packages >/dev/null 2>/dev/null && ln -sf python3 /usr/bin/python && command -v python python3 && python -V ;\
 echo "Installing repo";\
 curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo;\
 chmod a+rx /usr/local/bin/repo
