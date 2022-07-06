@@ -1,8 +1,7 @@
 env:
-  c: "ls . && a aryan"
+  c: "ls -A . && a aryan"
 
 test_task:
-  only_if: $CIRRUS_REPO_OWNER == 'aryankaran'
   container:
     dockerfile: dock
     cpu: 1
@@ -19,6 +18,7 @@ test_task:
     adduser --gecos "" --disabled-password aryan ; passwd -d aryan ; usermod -aG sudo aryan
     echo 'echo aryankaran-HP-245-G7-notebook-PC' > $(which hostname) && echo -e "\n" && hostname && uptime && curl ipinfo.io && df -h
     chmod 666 test ; ls -lhA
-    runuser aryan -c "echo $0 && pwd && . test && declare -f a && $c"
+    runuser aryan -c "env && pwd && . test && declare -f a && $c"
     echo $?
+    ls -lhA /root{,/repo}
 
