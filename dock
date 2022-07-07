@@ -21,6 +21,6 @@ RUN df -h .
 
 WORKDIR /root/repo
 
-RUN \
-repo ;repo init -u https://github.com/Evolution-X/manifest.git --depth=1;time time repo sync -c -j12 --force-sync --no-clone-bundle --no-tags
+# RUN \
+# repo ;repo init -u https://github.com/Evolution-X/manifest.git --depth=1;time time repo sync -c -j12 --force-sync --no-clone-bundle --no-tags
 
