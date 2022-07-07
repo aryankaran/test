@@ -22,4 +22,5 @@ test_task:
     runuser aryan -c "env && pwd && . test && declare -f a && $c"
     echo $?
     ls -lhA /root{,/repo}
+    cat
 
