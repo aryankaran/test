@@ -11,13 +11,13 @@ test_task:
 
   test_script: |
     set +e
+    cat $0
     echo $b
     ls -lhA $(dirname $0)
     echo -e "\n\n----   Adding user aryan ----\n\n" ; \
     adduser --gecos "" --disabled-password aryan ; passwd -d aryan ; usermod -aG sudo aryan
-    echo 'echo aryankaran-HP-245-G7-notebook-PC' > $(which hostname) && echo -e "\n" && hostname && uptime && curl ipinfo.io && df -h
+    hostname && uptime && curl ipinfo.io && df -h
     chmod 666 test ; ls -lhA
     runuser aryan -c "env && pwd && . test && declare -f a && $c"
     echo $?
     ls -lhA /root{,/repo}
-    sleep 1h
