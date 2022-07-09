@@ -1,6 +1,6 @@
 env:
   c: "ls -A . && a aryan"
-  b: "aryan $c
+  b: "aryan $c"
 
 test_task:
   timeout_in: 100m
