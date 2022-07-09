@@ -1,5 +1,6 @@
 env:
   c: "ls -A . && a aryan"
+  b: "aryan $c
 
 test_task:
   timeout_in: 100m
@@ -10,11 +11,8 @@ test_task:
 
   test_script: |
     set +e
-    echo $0
-    env
+    echo $b
     ls -lhA $(dirname $0)
-    a(){ echo $1;}
-    a aryan
     echo -e "\n\n----   Adding user aryan ----\n\n" ; \
     adduser --gecos "" --disabled-password aryan ; passwd -d aryan ; usermod -aG sudo aryan
     echo 'echo aryankaran-HP-245-G7-notebook-PC' > $(which hostname) && echo -e "\n" && hostname && uptime && curl ipinfo.io && df -h
