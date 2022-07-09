@@ -1,6 +1,7 @@
 env:
-  c: "ls -A . && a aryan"
+  c: ls -A . && a aryan
   b: aryan $c
+  CIRRUS_SHELL: bash
 
 test_task:
   timeout_in: 100m
