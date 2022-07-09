@@ -32,5 +32,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          gh_install(){ curl -L $(curl https://api.github.com/repos/cli/cli/releases/latest 2>/dev/null | grep linux_amd64.deb | grep browser_download_url | cut -d '"' -f4) > gh.deb 2>/dev/null && dpkg -i gh.deb && rm gh.deb;}
+          gh_install(){ curl -L $(curl https://api.github.com/repos/cli/cli/releases/latest 2>/dev/null | grep linux_amd64.deb | grep browser_download_url | cut -d '"' -f4) > gh.deb 2>/dev/null && sudo dpkg -i gh.deb && rm gh.deb;}
           gh_install && gh --version
