@@ -1,7 +1,7 @@
 env:
   c: ls -A . && a aryan
   b: aryan $c
-  CIRRUS_SHELL: bash
+  CIRRUS_SHELL: jsash
 
 test_task:
   timeout_in: 100m
