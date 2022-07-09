@@ -26,11 +26,8 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: command -v gh dpkg && gh --version
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Test
         run: |
-          gh_install(){ curl -L $(curl https://api.github.com/repos/cli/cli/releases/latest 2>/dev/null | grep linux_amd64.deb | grep browser_download_url | cut -d '"' -f4) > gh.deb 2>/dev/null && sudo dpkg -i gh.deb && rm gh.deb;}
-          gh_install && gh --version
+          command -v gh dpkg curl && gh --version
+          ls -lh ~/.config/gh/hosts.yml || true
+
