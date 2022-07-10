@@ -11,6 +11,7 @@ test_task:
     memory: 4G
 
   test_script: |
+    env
     set +e
     cat $0
     echo $b
