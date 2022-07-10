@@ -11,7 +11,8 @@ test_task:
     memory: 4G
 
   test_script: |
-    env
+    echo 'hey=aryan' >> $CIRRUS_ENV
+    echo $hey
     set +e
     cat $0
     echo $b
@@ -20,6 +21,10 @@ test_task:
     adduser --gecos "" --disabled-password aryan ; passwd -d aryan ; usermod -aG sudo aryan
     hostname && uptime && curl ipinfo.io && df -h
     chmod 666 test ; ls -lhA
-    runuser aryan -c "env && pwd && . test && declare -f a && $c"
+    runuser aryan -c "echo $hey && env && pwd && . test && declare -f a && $c"
     echo $?
     ls -lhA /root{,/repo}
+
+  test1_script: |
+    echo $hey
+    env
